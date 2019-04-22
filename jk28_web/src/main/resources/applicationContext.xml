@@ -14,23 +14,23 @@
 	http://www.springframework.org/schema/context    
 	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<!-- 引入外部属性文件=============================== -->
-	<context:property-placeholder location="classpath:jdbc.properties"/>
+	<!--&lt;!&ndash; 引入外部属性文件=============================== &ndash;&gt;-->
+	<!--<context:property-placeholder location="classpath:jdbc.properties"/>-->
 
-	<!-- 配置C3P0连接池=============================== -->
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="driverClass" value="${jdbc.driverClass}"/>
-		<property name="jdbcUrl" value="${jdbc.url}"/>
-		<property name="user" value="${jdbc.username}"/>
-		<property name="password" value="${jdbc.password}"/>
-	</bean>
-
+	<!--&lt;!&ndash; 配置C3P0连接池=============================== &ndash;&gt;-->
 	<!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
-		<!--<property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />-->
-		<!--<property name="jdbcUrl" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl" />-->
-		<!--<property name="user" value="HR" />-->
-		<!--<property name="password" value="HR" />-->
+		<!--<property name="driverClass" value="${jdbc.driverClass}"/>-->
+		<!--<property name="jdbcUrl" value="${jdbc.url}"/>-->
+		<!--<property name="user" value="${jdbc.username}"/>-->
+		<!--<property name="password" value="${jdbc.password}"/>-->
 	<!--</bean>-->
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl" />
+		<property name="user" value="HR" />
+		<property name="password" value="HR" />
+	</bean>
 
 
 	<!-- 2.sessionFactory-->
