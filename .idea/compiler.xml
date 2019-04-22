@@ -16,13 +16,13 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.7">
-      <module name="jk28_dao" target="1.5" />
-      <module name="jk28_domain" target="1.5" />
-      <module name="jk28_exception" target="1.5" />
-      <module name="jk28_parent" target="1.5" />
-      <module name="jk28_service" target="1.5" />
-      <module name="jk28_utils" target="1.5" />
-      <module name="jk28_web" target="1.5" />
+      <module name="jk28_dao" target="1.7" />
+      <module name="jk28_domain" target="1.7" />
+      <module name="jk28_exception" target="1.7" />
+      <module name="jk28_parent" target="1.7" />
+      <module name="jk28_service" target="1.7" />
+      <module name="jk28_utils" target="1.7" />
+      <module name="jk28_web" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
