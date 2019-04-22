@@ -17,9 +17,7 @@
 		<action name="logout" method="logout" class="cn.itcast.jk.action.LoginAction">
 			<result name="logout">/WEB-INF/pages/sysadmin/login/logout.jsp</result>
 		</action>
-		
-		
-		
+
 		<action name="homeAction_*" method="{1}" class="cn.itcast.jk.action.HomeAction">
 			<result name="fmain">/WEB-INF/pages/home/fmain.jsp</result>
 			<result name="title">/WEB-INF/pages/home/title.jsp</result>
@@ -30,7 +28,7 @@
 	</package>
 
 	<!-- 分模块开发 -->
-	<!--<include file="struts/struts-sysadmin.xml"></include>-->
+	<include file="struts/struts-sysadmin.xml"></include>
 	<!--<include file="struts/struts-cargo.xml"></include>-->
 	<!--<include file="struts/struts-stat.xml"></include>-->
 	
