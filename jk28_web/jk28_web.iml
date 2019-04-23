@@ -41,11 +41,11 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" scope="PROVIDED" name="Tomcat 7.0.6" level="application_server_libraries" />
     <orderEntry type="library" exported="" name="lib" level="project" />
-    <orderEntry type="module" module-name="jk28_service" exported="" />
-    <orderEntry type="module" module-name="jk28_dao" exported="" />
-    <orderEntry type="module" module-name="jk28_utils" exported="" />
-    <orderEntry type="module" module-name="jk28_domain" exported="" />
-    <orderEntry type="module" module-name="jk28_exception" exported="" />
+    <orderEntry type="module" module-name="jk28_service" />
+    <orderEntry type="module" module-name="jk28_dao" />
+    <orderEntry type="module" module-name="jk28_utils" />
+    <orderEntry type="module" module-name="jk28_domain" />
+    <orderEntry type="module" module-name="jk28_exception" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.4" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4" level="project" />
     <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.2" level="project" />

@@ -33,6 +33,13 @@
 	        <tr>
 	            <td class="columnTitle">上级部门：</td>
 	            <td class="tableContent">
+					<!-- Struts做下拉列表方便 -->
+					<!--
+					 name：下拉框名称
+					 list：绑定的集合名
+					 headerKey：首选项，相当于<option value="">--请选择--</option>
+					 listKey：<option value="${id}">${deptName}</option>
+					 -->
 	            	<s:select name="parent.id" list="#deptList" headerKey="" headerValue="--请选择--" listKey="id" listValue="deptName"></s:select>
 	            </td>
 	        </tr>		
