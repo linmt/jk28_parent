@@ -100,16 +100,12 @@ public class DeptAction extends BaseAction implements ModelDriven<Dept> {
 	public String toupdate() throws Exception {
 		//1.根据id,得到一个对象
 		Dept obj = deptService.get(Dept.class, model.getId());
-		
 		//2.将对象放入值栈中
 		super.push(obj);
-		
 		//3.查询父部门
 		List<Dept> deptList = deptService.find("from Dept where state=1", Dept.class, null);
-		
 		//4.将查询的结果放入值栈中 ,它放在context区域中
 		super.put("deptList", deptList);
-		
 		//5.跳页面
 		return "toupdate";
 	}
@@ -125,6 +121,7 @@ public class DeptAction extends BaseAction implements ModelDriven<Dept> {
 		obj.setParent(model.getParent());
 		obj.setDeptName(model.getDeptName());
 
+		//不能直接调用saveOrUpdate，不然Dept对象的状态值等会变成0
 		deptService.saveOrUpdate(obj);
 		return "alist";
 	}
