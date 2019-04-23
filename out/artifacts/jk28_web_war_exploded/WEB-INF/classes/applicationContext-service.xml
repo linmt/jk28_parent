@@ -14,5 +14,9 @@
 	http://www.springframework.org/schema/context    
 	http://www.springframework.org/schema/context/spring-context.xsd">
 	
-
+	<!-- service -->
+	<bean id="deptService" class="cn.itcast.jk.service.impl.DeptServiceImpl">
+	    <property name="baseDao" ref="baseDao"></property>
+	</bean>
 </beans>
+	
