@@ -21,4 +21,15 @@
 	<bean id="deptAction" class="cn.itcast.jk.action.sysadmin.DeptAction" scope="prototype">
 		<property name="deptService" ref="deptService"></property>
 	</bean>
+
+	<!-- 用户的Action -->
+	<bean id="userAction" class="cn.itcast.jk.action.sysadmin.UserAction" scope="prototype">
+		<property name="userService" ref="userService"></property>
+		<property name="deptService" ref="deptService"></property>
+	</bean>
+
+	<!-- 角色 -->
+	<bean id="roleAction" class="cn.itcast.jk.action.sysadmin.RoleAction" scope="prototype">
+		<property name="roleService" ref="roleService"></property>
+	</bean>
 </beans>

@@ -1,14 +1,14 @@
 package cn.itcast.jk.service.impl;
 
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.List;
-
 import cn.itcast.jk.dao.BaseDao;
 import cn.itcast.jk.domain.Dept;
 import cn.itcast.jk.service.DeptService;
 import cn.itcast.jk.utils.Page;
 import cn.itcast.jk.utils.UtilFuns;
+
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 
 public class DeptServiceImpl implements DeptService {
 
@@ -42,11 +42,20 @@ public class DeptServiceImpl implements DeptService {
 	}
 
 	public void deleteById(Class<Dept> entityClass, Serializable id) {
-		baseDao.deleteById(entityClass, id);
+		//有哪些子部门，它的父部门编号为第二个参数：id
+		String hql = "from Dept where parent.id=?";
+		List<Dept> list = baseDao.find(hql, Dept.class, new Object[]{id});//查询出当前父部门下的子部门列表
+		if(list!=null && list.size()>0){
+			for(Dept dept :list){
+				deleteById(Dept.class,dept.getId());//递归调用
+			}
+		}
+		baseDao.deleteById(entityClass, id);//删除父部门
 	}
 
 	public void delete(Class<Dept> entityClass, Serializable[] ids) {
-		baseDao.delete(entityClass, ids);
+		for(Serializable id :ids){
+			this.deleteById(Dept.class,id);
+		}
 	}
-
 }

@@ -18,5 +18,11 @@
 	<bean id="deptService" class="cn.itcast.jk.service.impl.DeptServiceImpl">
 	    <property name="baseDao" ref="baseDao"></property>
 	</bean>
+	<bean id="userService" class="cn.itcast.jk.service.impl.UserServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	<bean id="roleService" class="cn.itcast.jk.service.impl.RoleServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
 </beans>
 	
