@@ -110,7 +110,7 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 	}
 	
 	/**
-	 * 修改
+	 * 修改（完成）
 	 */
 	public String update() throws Exception {
 		//调用业务
