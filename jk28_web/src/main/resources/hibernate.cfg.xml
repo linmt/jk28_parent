@@ -18,7 +18,9 @@
 
 		<!--  加载映射文件-->
 		<mapping resource="Dept.hbm.xml"></mapping>
-
+		<mapping resource="User.hbm.xml"></mapping>
+		<mapping resource="Userinfo.hbm.xml"></mapping>
+		<mapping resource="Role.hbm.xml"></mapping>
 	</session-factory>
 
 	<!--<session-factory>-->

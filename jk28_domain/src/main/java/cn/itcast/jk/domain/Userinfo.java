@@ -11,11 +11,11 @@ public class Userinfo  extends BaseEntity {
 	private Date birthday;  //出生年月
 	private String gender;  //性别
 	private String station;//岗位
-	
 	private String telephone;//电话
 	private Integer degree;//等级
 	private String remark;// 备注
 	private Integer orderNo;//排序号
+
 	public String getId() {
 		return id;
 	}

@@ -7,7 +7,6 @@
       <id name="id" column="USER_INFO_ID">
          <generator class="assigned"></generator>
       </id>
-      
   
       <property name="name" column="NAME"></property>
       <property name="joinDate" column="JOIN_DATE"></property>
@@ -25,10 +24,8 @@
       <property name="createTime" column="CREATE_TIME"></property>
       <property name="updateBy" column="UPDATE_BY"></property>
       <property name="updateTime" column="UPDATE_TIME"></property>
-     
 	
       <!--	private User manager;//用户与直属领导    多对一 -->
       <many-to-one name="manager" class="User" column="MANAGER_ID"></many-to-one>
-      
-         </class>
+   </class>
 </hibernate-mapping>
