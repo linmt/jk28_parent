@@ -32,4 +32,9 @@
 	<bean id="roleAction" class="cn.itcast.jk.action.sysadmin.RoleAction" scope="prototype">
 		<property name="roleService" ref="roleService"></property>
 	</bean>
+
+	<!-- 模块 -->
+	<bean id="moduleAction" class="cn.itcast.jk.action.sysadmin.ModuleAction" scope="prototype">
+		<property name="moduleService" ref="moduleService"></property>
+	</bean>
 </beans>
