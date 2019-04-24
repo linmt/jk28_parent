@@ -3,6 +3,7 @@ package cn.itcast.jk.domain;
 import java.util.HashSet;
 import java.util.Set;
 
+//完成
 public class Role extends BaseEntity{
 	private String id;
 	private Set<User> users = new HashSet<User>(0);//角色与用户    多对多

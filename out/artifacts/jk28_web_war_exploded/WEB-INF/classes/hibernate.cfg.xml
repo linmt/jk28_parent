@@ -20,7 +20,7 @@
 		<mapping resource="Dept.hbm.xml"></mapping>
 		<mapping resource="User.hbm.xml"></mapping>
 		<mapping resource="Userinfo.hbm.xml"></mapping>
-		<mapping resource="Role.hbm.xml"></mapping>
+		<mapping resource="Role.hbm.xml"></mapping><!--  加载Role-->
 	</session-factory>
 
 	<!--<session-factory>-->
