@@ -1,19 +1,19 @@
 package cn.itcast.jk.service.impl;
 
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.List;
-import java.util.UUID;
-
 import cn.itcast.jk.dao.BaseDao;
 import cn.itcast.jk.domain.Role;
 import cn.itcast.jk.service.RoleService;
 import cn.itcast.jk.utils.Page;
 import cn.itcast.jk.utils.UtilFuns;
 
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
+
 public class RoleServiceImpl implements RoleService {
 
 	private BaseDao baseDao;
+
 	public void setBaseDao(BaseDao baseDao) {
 		this.baseDao = baseDao;
 	}
@@ -34,7 +34,6 @@ public class RoleServiceImpl implements RoleService {
 		if(UtilFuns.isEmpty(entity.getId())){
 			//新增
 			
-			
 		}
 		baseDao.saveOrUpdate(entity);
 	}
@@ -44,15 +43,12 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	public void deleteById(Class<Role> entityClass, Serializable id) {
-		
 		baseDao.deleteById(entityClass, id);//删除一个对象
 	}
 
 	public void delete(Class<Role> entityClass, Serializable[] ids) {
-		
 		for(Serializable id :ids){
 			this.deleteById(Role.class,id);
 		}
 	}
-
 }

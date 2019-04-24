@@ -3,6 +3,7 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="cn.itcast.jk.domain">
+    <!--标记-->
    <class name="Role" table="ROLE_P" dynamic-insert="true" dynamic-update="true">
       <id name="id" column="ROLE_ID">
          <generator class="uuid"></generator>

@@ -37,14 +37,10 @@ public class RoleAction extends BaseAction implements ModelDriven<Role> {
 	 */
 	public String list() throws Exception {
 		roleService.findPage("from Role", page, Role.class, null);
-		
 		//设置分页的url地址
 		page.setUrl("roleAction_list");
-		
 		//将page对象压入栈顶
 		super.push(page);
-		
-		
 		return "list";
 	}
 	
@@ -57,10 +53,8 @@ public class RoleAction extends BaseAction implements ModelDriven<Role> {
 	public String toview() throws Exception {
 		//1.调用业务方法，根据id,得到对象
 		Role dept = roleService.get(Role.class, model.getId());
-		
 		//放入栈顶
 		super.push(dept);
-		
 		//3.跳页面
 		return "toview";
 	}
@@ -98,11 +92,8 @@ public class RoleAction extends BaseAction implements ModelDriven<Role> {
 	public String toupdate() throws Exception {
 		//1.根据id,得到一个对象
 		Role obj = roleService.get(Role.class, model.getId());
-		
 		//2.将对象放入值栈中
 		super.push(obj);
-		
-		
 		//5.跳页面
 		return "toupdate";
 	}
@@ -117,7 +108,6 @@ public class RoleAction extends BaseAction implements ModelDriven<Role> {
 		//2.设置修改的属性
 		obj.setName(model.getName());
 		obj.setRemark(model.getRemark());
-  
 		
 		roleService.saveOrUpdate(obj);
 		return "alist";
@@ -142,12 +132,8 @@ public class RoleAction extends BaseAction implements ModelDriven<Role> {
 	 */
 	public String delete() throws Exception {
 		String ids[] = model.getId().split(", ");
-		
 		//调用业务方法，实现批量删除
 		roleService.delete(Role.class, ids);
-		
-		
 		return "alist";
 	}
-
 }

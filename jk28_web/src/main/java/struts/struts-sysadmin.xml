@@ -25,14 +25,13 @@
 		    <result name="alist" type="redirectAction">userAction_list</result>
 		</action>
 
-
-		<!--<action name="roleAction_*" class="roleAction" method="{1}">-->
-		    <!--<result name="list">/WEB-INF/pages/sysadmin/role/jRoleList.jsp</result>-->
-		    <!--<result name="toview">/WEB-INF/pages/sysadmin/role/jRoleView.jsp</result>-->
-		    <!--<result name="tocreate">/WEB-INF/pages/sysadmin/role/jRoleCreate.jsp</result>-->
-		    <!--<result name="toupdate">/WEB-INF/pages/sysadmin/role/jRoleUpdate.jsp</result>-->
-		    <!--<result name="alist" type="redirectAction">roleAction_list</result>-->
-		<!--</action>-->
+		<action name="roleAction_*" class="roleAction" method="{1}">
+		    <result name="list">/WEB-INF/pages/sysadmin/role/jRoleList.jsp</result>
+		    <result name="toview">/WEB-INF/pages/sysadmin/role/jRoleView.jsp</result>
+		    <result name="tocreate">/WEB-INF/pages/sysadmin/role/jRoleCreate.jsp</result>
+		    <result name="toupdate">/WEB-INF/pages/sysadmin/role/jRoleUpdate.jsp</result>
+		    <result name="alist" type="redirectAction">roleAction_list</result>
+		</action>
 
 	</package>
 
