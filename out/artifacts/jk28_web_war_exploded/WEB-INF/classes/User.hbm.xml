@@ -3,6 +3,7 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="cn.itcast.jk.domain">
+   <!-- 由于数据库中创建时间是自动产生的，所以要dynamic-insert="true" dynamic-update="true" -->
    <class name="User" table="USER_P" dynamic-insert="true" dynamic-update="true">
       <id name="id" column="USER_ID">
          <generator class="assigned"></generator>
