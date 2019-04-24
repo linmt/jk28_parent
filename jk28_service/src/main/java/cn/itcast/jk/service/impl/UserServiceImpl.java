@@ -1,19 +1,19 @@
 package cn.itcast.jk.service.impl;
 
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.List;
-import java.util.UUID;
-
 import cn.itcast.jk.dao.BaseDao;
 import cn.itcast.jk.domain.User;
 import cn.itcast.jk.service.UserService;
 import cn.itcast.jk.utils.Page;
 import cn.itcast.jk.utils.UtilFuns;
 
-public class UserServiceImpl implements UserService {
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
+import java.util.UUID;
 
+public class UserServiceImpl implements UserService {
 	private BaseDao baseDao;
+
 	public void setBaseDao(BaseDao baseDao) {
 		this.baseDao = baseDao;
 	}
@@ -51,10 +51,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public void delete(Class<User> entityClass, Serializable[] ids) {
-		
 		for(Serializable id :ids){
 			this.deleteById(User.class,id);
 		}
 	}
-
 }

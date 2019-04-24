@@ -1,20 +1,14 @@
 package cn.itcast.jk.action.sysadmin;
 
-import java.util.List;
-
-import com.opensymphony.xwork2.ModelDriven;
-
 import cn.itcast.jk.action.BaseAction;
 import cn.itcast.jk.domain.Dept;
 import cn.itcast.jk.domain.User;
 import cn.itcast.jk.service.DeptService;
 import cn.itcast.jk.service.UserService;
 import cn.itcast.jk.utils.Page;
-/**
- * 部门管理的Action
- * @author Administrator
- *
- */
+import com.opensymphony.xwork2.ModelDriven;
+
+import java.util.List;
 public class UserAction extends BaseAction implements ModelDriven<User> {
 	private User model = new User();
 	public User getModel() {
@@ -30,7 +24,6 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 		this.page = page;
 	}
 	
-	
 	//注入UserService
 	private UserService userService;
 	public void setUserService(UserService userService) {
@@ -40,19 +33,16 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 	public void setDeptService(DeptService deptService) {
 		this.deptService = deptService;
 	}
+
 	/**
 	 * 分页查询
 	 */
 	public String list() throws Exception {
 		userService.findPage("from User", page, User.class, null);
-		
 		//设置分页的url地址
 		page.setUrl("userAction_list");
-		
 		//将page对象压入栈顶
 		super.push(page);
-		
-		
 		return "list";
 	}
 	
@@ -65,10 +55,8 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 	public String toview() throws Exception {
 		//1.调用业务方法，根据id,得到对象
 		User dept = userService.get(User.class, model.getId());
-		
 		//放入栈顶
 		super.push(dept);
-		
 		//3.跳页面
 		return "toview";
 	}
@@ -111,16 +99,12 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 	public String toupdate() throws Exception {
 		//1.根据id,得到一个对象
 		User obj = userService.get(User.class, model.getId());
-		
 		//2.将对象放入值栈中
 		super.push(obj);
-		
 		//3.查询父部门
 		List<Dept> deptList = deptService.find("from Dept where state=1", Dept.class, null);
-		
 		//4.将查询的结果放入值栈中 ,它放在context区域中
 		super.put("deptList", deptList);
-		
 		//5.跳页面
 		return "toupdate";
 	}
@@ -131,12 +115,11 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 	public String update() throws Exception {
 		//调用业务
 		User obj = userService.get(User.class, model.getId());//根据id,得到一个数据库中保存的对象
-		
+
 		//2.设置修改的属性
 		obj.setDept(model.getDept());
 		obj.setUserName(model.getUserName());
 		obj.setState(model.getState());
-  
 		
 		userService.saveOrUpdate(obj);
 		return "alist";
@@ -156,17 +139,11 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 	 *    id:Integer,Float,Double.Date类型                  id=100               id=200        id=300  
 	 *    id=300
 	 *    Integer []id;  {100,200,300}
-	 *        
-	 *                       
 	 */
 	public String delete() throws Exception {
 		String ids[] = model.getId().split(", ");
-		
 		//调用业务方法，实现批量删除
 		userService.delete(User.class, ids);
-		
-		
 		return "alist";
 	}
-
 }
