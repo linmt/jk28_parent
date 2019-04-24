@@ -126,7 +126,7 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 	}
 	
 	/**
-	 * 删除
+	 * 删除（不用递归删除）
 	 * <input type="checkbox" name="id" value="100"/>
 	 * <input type="checkbox" name="id" value="3d00290a-1af0-4c28-853e-29fbf96a2722"/>
 	 * .....

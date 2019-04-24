@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
 
 	public void deleteById(Class<User> entityClass, Serializable id) {
 		
-		baseDao.deleteById(entityClass, id);//删除一个对象
+		baseDao.deleteById(entityClass, id);//这里不用递归
 	}
 
 	public void delete(Class<User> entityClass, Serializable[] ids) {
