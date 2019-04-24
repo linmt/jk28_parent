@@ -127,8 +127,6 @@ public class RoleAction extends BaseAction implements ModelDriven<Role> {
 	 *    id:Integer,Float,Double.Date类型                  id=100               id=200        id=300  
 	 *    id=300
 	 *    Integer []id;  {100,200,300}
-	 *        
-	 *                       
 	 */
 	public String delete() throws Exception {
 		String ids[] = model.getId().split(", ");
