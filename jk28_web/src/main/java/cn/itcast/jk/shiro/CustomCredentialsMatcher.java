@@ -12,13 +12,11 @@ public class CustomCredentialsMatcher extends SimpleCredentialsMatcher {
 	public boolean doCredentialsMatch(AuthenticationToken token, AuthenticationInfo info) {
 		//1.向下转型 
 		UsernamePasswordToken upToken = (UsernamePasswordToken) token;
-		
 		//2.将用户在界面输入的原始密码加密
+		//不能使用toString
 		Object pwd = Encrypt.md5(new String(upToken.getPassword()), upToken.getUsername());
-		
 		//3.取出数据库中加密的密码
 		Object dbPwd = info.getCredentials();
-		
 		return this.equals(pwd, dbPwd);
 	}
 }
