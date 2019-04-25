@@ -2,13 +2,17 @@ package cn.itcast.jk.action.sysadmin;
 
 import cn.itcast.jk.action.BaseAction;
 import cn.itcast.jk.domain.Dept;
+import cn.itcast.jk.domain.Role;
 import cn.itcast.jk.domain.User;
 import cn.itcast.jk.service.DeptService;
+import cn.itcast.jk.service.RoleService;
 import cn.itcast.jk.service.UserService;
 import cn.itcast.jk.utils.Page;
 import com.opensymphony.xwork2.ModelDriven;
 
 import java.util.List;
+import java.util.Set;
+
 public class UserAction extends BaseAction implements ModelDriven<User> {
 	private User model = new User();
 	public User getModel() {
@@ -33,7 +37,10 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 	public void setDeptService(DeptService deptService) {
 		this.deptService = deptService;
 	}
-
+	private RoleService roleService;
+	public void setRoleService(RoleService roleService) {
+		this.roleService = roleService;
+	}
 	/**
 	 * 分页查询
 	 */
@@ -145,5 +152,35 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 		//调用业务方法，实现批量删除
 		userService.delete(User.class, ids);
 		return "alist";
+	}
+
+	/**
+	 * 进入角色分配页面
+	 * @return
+	 * @throws Exception
+	 */
+	public String torole() throws Exception {
+		//1.根据id,得到对象
+		User obj = userService.get(User.class, model.getId());
+		//2.将对象保存到值栈中
+		super.push(obj);
+
+		//3.调用角色业务方法，得到角色列表
+		List<Role> roleList = roleService.find("from Role ", Role.class, null);
+
+		//4.将roleList放入值栈
+		super.put("roleList", roleList);
+
+		//5.得到当前用户的角色列表
+		Set<Role> roleSet = obj.getRoles();
+		StringBuilder sb = new StringBuilder();
+		for(Role role :roleSet){
+			sb.append(role.getName()).append(",");   //管理员,船运经理，
+		}
+
+		//6.当前用户的角色字符串放入值栈中
+		super.put("roleStr", sb.toString());
+
+		return "torole";
 	}
 }

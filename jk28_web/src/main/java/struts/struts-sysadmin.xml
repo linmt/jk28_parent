@@ -23,6 +23,7 @@
 		    <result name="tocreate">/WEB-INF/pages/sysadmin/user/jUserCreate.jsp</result>
 		    <result name="toupdate">/WEB-INF/pages/sysadmin/user/jUserUpdate.jsp</result>
 		    <result name="alist" type="redirectAction">userAction_list</result>
+			<result name="torole">/WEB-INF/pages/sysadmin/user/jUserRole.jsp</result>
 		</action>
 
 		<action name="roleAction_*" class="roleAction" method="{1}">

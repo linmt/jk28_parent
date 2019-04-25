@@ -26,6 +26,7 @@
 	<bean id="userAction" class="cn.itcast.jk.action.sysadmin.UserAction" scope="prototype">
 		<property name="userService" ref="userService"></property>
 		<property name="deptService" ref="deptService"></property>
+		<property name="roleService" ref="roleService"></property>
 	</bean>
 
 	<!-- 角色 -->
