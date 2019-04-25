@@ -10,6 +10,7 @@ import cn.itcast.jk.service.UserService;
 import cn.itcast.jk.utils.Page;
 import com.opensymphony.xwork2.ModelDriven;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -156,8 +157,6 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 
 	/**
 	 * 进入角色分配页面
-	 * @return
-	 * @throws Exception
 	 */
 	public String torole() throws Exception {
 		//1.根据id,得到对象
@@ -182,5 +181,37 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 		super.put("roleStr", sb.toString());
 
 		return "torole";
+	}
+
+	/**
+	 * 实现角色分配
+	 * <input type="hidden" name="id" value="58b537be-2eea-4dee-bc90-f73032476fd6"/>----model.id
+	 *
+	 * <input type="checkbox" name="roleIds" value="4028a1c34ec2e5c8014ec2ebf8430001" class="input">
+	 <input type="checkbox" name="roleIds" value="4028a1c34ec2e5c8014ec2ebf8430001" class="input">
+	 */
+	public String role() throws Exception {
+		//1.根据用户的id,得到对象
+		User obj = userService.get(User.class, model.getId());
+
+		//2.有哪些角色？只要遍历roleIds，就知道了
+		Set<Role> roles = new HashSet<Role>();//当前选中的角色列表
+		for(String id :roleIds){
+			Role role = roleService.get(Role.class, id);
+			roles.add(role);//向角色列表中添加一个新的角色
+		}
+
+		//3.设置用户与角色列表之间的关系
+		obj.setRoles(roles);
+
+		//4.保存到数据库表中
+		userService.saveOrUpdate(obj);//影响的是用户角色的中间表
+
+		//5.跳页面
+		return "alist";
+	}
+	private String[] roleIds;//保存角色的列表
+	public void setRoleIds(String[] roleIds) {
+		this.roleIds = roleIds;
 	}
 }
