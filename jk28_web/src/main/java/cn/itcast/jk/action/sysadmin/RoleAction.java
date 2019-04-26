@@ -1,10 +1,18 @@
 package cn.itcast.jk.action.sysadmin;
 
 import cn.itcast.jk.action.BaseAction;
+import cn.itcast.jk.domain.Module;
 import cn.itcast.jk.domain.Role;
+import cn.itcast.jk.service.ModuleService;
 import cn.itcast.jk.service.RoleService;
 import cn.itcast.jk.utils.Page;
 import com.opensymphony.xwork2.ModelDriven;
+import org.apache.struts2.ServletActionContext;
+
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Set;
+
 /**
  * 部门管理的Action
  * @author Administrator
@@ -31,7 +39,12 @@ public class RoleAction extends BaseAction implements ModelDriven<Role> {
 	public void setRoleService(RoleService roleService) {
 		this.roleService = roleService;
 	}
-	
+
+    private ModuleService moduleService;
+    public void setModuleService(ModuleService moduleService) {
+        this.moduleService = moduleService;
+    }
+
 	/**
 	 * 分页查询
 	 */
@@ -147,4 +160,61 @@ public class RoleAction extends BaseAction implements ModelDriven<Role> {
 		//跳页面
 		return "tomodule";
 	}
+
+    /**
+     * 为了使用 zTree树，就要组织好zTree树所使用的json数据
+     * json数据结构如下：
+     * [{"id":"模块的id","pId":"父模块id","name":"模块名","checked":"true|false"},{"id":"模块的id","pId":"父模块id","name":"模块名","checked":"true|false"}]
+     *
+     * 常用的json插件有哪些？
+     * json-lib    fastjson     struts-json-plugin-xxx.jar    手动拼接
+     *
+     * 如何输出?
+     * 借助于response对象输出数据
+     */
+    public String roleModuleJsonStr() throws Exception{
+        //1.根据角色id,得到角色对象
+        Role role = roleService.get(Role.class, model.getId());
+
+        //2.通过对象导航方式，加载出当前角色的模块列表
+        Set<Module> moduleSet = role.getModules();
+
+        //3.加载出所有的模块列表
+        List<Module> moduleList = moduleService.find("from Module", Module.class, null);
+        int size=moduleList.size();
+
+        //4.组织json串
+        //这里涉及到判断，不适合用fastjson
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for(Module module :moduleList){
+            size--;
+            sb.append("{\"id\":\"").append(module.getId());
+            sb.append("\",\"pId\":\"").append(module.getParentId());
+            sb.append("\",\"name\":\"").append(module.getName());
+            sb.append("\",\"checked\":\"");
+            if(moduleSet.contains(module)){
+                sb.append("true");
+            }else{
+                sb.append("false");
+            }
+            sb.append("\"}");
+
+            if(size>0){
+                sb.append(",");
+            }
+        }
+        sb.append("]");
+
+        //5.得到response对象
+        HttpServletResponse response = ServletActionContext.getResponse();
+        response.setContentType("application/json;charset=UTF-8");
+        response.setHeader("Cache-Control", "no-cache");
+
+        //6.使用 response对象输出json串
+        response.getWriter().write(sb.toString());
+
+        //7.返回NONE
+        return NONE;
+    }
 }
