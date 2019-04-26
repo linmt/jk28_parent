@@ -134,4 +134,17 @@ public class RoleAction extends BaseAction implements ModelDriven<Role> {
 		roleService.delete(Role.class, ids);
 		return "alist";
 	}
+
+	/**
+	 * 进入模块分配页面
+	 *
+	 */
+	public String tomodule() throws Exception {
+		//1.根据角色id,得到角色对象
+		Role obj = roleService.get(Role.class, model.getId());
+		//2.保存值栈中
+		super.push(obj);
+		//跳页面
+		return "tomodule";
+	}
 }
