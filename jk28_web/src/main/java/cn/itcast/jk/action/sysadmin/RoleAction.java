@@ -3,6 +3,7 @@ package cn.itcast.jk.action.sysadmin;
 import cn.itcast.jk.action.BaseAction;
 import cn.itcast.jk.domain.Module;
 import cn.itcast.jk.domain.Role;
+import cn.itcast.jk.exception.SysException;
 import cn.itcast.jk.service.ModuleService;
 import cn.itcast.jk.service.RoleService;
 import cn.itcast.jk.utils.Page;
@@ -65,10 +66,15 @@ public class RoleAction extends BaseAction implements ModelDriven<Role> {
 	 *      id属性：rterytrytrytr
 	 */
 	public String toview() throws Exception {
-		//1.调用业务方法，根据id,得到对象
-		Role dept = roleService.get(Role.class, model.getId());
-		//放入栈顶
-		super.push(dept);
+		try {
+			//1.调用业务方法，根据id,得到对象
+			Role dept = roleService.get(Role.class, model.getId());
+			//放入栈顶
+			super.push(dept);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new SysException("请选择操作对象");
+		}
 		//3.跳页面
 		return "toview";
 	}

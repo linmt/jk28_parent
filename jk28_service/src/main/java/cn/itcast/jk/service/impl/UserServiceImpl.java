@@ -3,7 +3,9 @@ package cn.itcast.jk.service.impl;
 import cn.itcast.jk.dao.BaseDao;
 import cn.itcast.jk.domain.User;
 import cn.itcast.jk.service.UserService;
+import cn.itcast.jk.utils.Encrypt;
 import cn.itcast.jk.utils.Page;
+import cn.itcast.jk.utils.SysConstant;
 import cn.itcast.jk.utils.UtilFuns;
 
 import java.io.Serializable;
@@ -36,7 +38,9 @@ public class UserServiceImpl implements UserService {
 			String id = UUID.randomUUID().toString();
 			entity.setId(id);
 			entity.getUserinfo().setId(id);
-			
+
+			//补充Shiro添加后的bug
+			entity.setPassword(Encrypt.md5(SysConstant.DEFAULT_PASS, entity.getUserName()));
 		}
 		baseDao.saveOrUpdate(entity);
 	}
