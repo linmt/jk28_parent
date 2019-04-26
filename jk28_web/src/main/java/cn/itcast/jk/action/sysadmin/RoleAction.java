@@ -10,6 +10,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -216,5 +217,39 @@ public class RoleAction extends BaseAction implements ModelDriven<Role> {
 
         //7.返回NONE
         return NONE;
+    }
+
+    /**
+     * 保存当前角色的模块列表
+     * 	<input type="hidden" name="id" value="${id}"/>
+     <input type="hidden" id="moduleIds" name="moduleIds" value="" />
+     */
+    public String module() throws Exception {
+        //1.哪个角色？
+        Role role = roleService.get(Role.class, model.getId());
+
+        //2.选中的模块有哪些？
+        String ids [] = moduleIds.split(",");
+
+        //加载出这些模块列表
+        Set<Module> moduleSet = new HashSet<Module>();
+        if(ids!=null && ids.length>0){
+            for(String id :ids){
+                moduleSet.add(moduleService.get(Module.class, id));//添加选中的模块，放到模块列表中
+            }
+        }
+
+        //3.实现角色分配新的模块
+        role.setModules(moduleSet);
+
+        //4.保存结果
+        roleService.saveOrUpdate(role);
+
+        //5.跳页面
+        return "alist";
+    }
+    private String moduleIds;
+    public void setModuleIds(String moduleIds) {
+        this.moduleIds = moduleIds;
     }
 }
