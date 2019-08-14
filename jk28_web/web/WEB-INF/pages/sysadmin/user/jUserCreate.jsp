@@ -10,26 +10,24 @@
 <form name="icform" method="post">
 
 <div id="menubar">
-<div id="middleMenubar">
-<div id="innerMenubar">
-  <div id="navMenubar">
-<ul>
-<li id="save"><a href="#" onclick="formSubmit('userAction_insert','_self');this.blur();">保存</a></li>
-<li id="back"><a href="#" onclick="history.go(-1);">返回</a></li>
-</ul>
-  </div>
-</div>
-</div>
+	<div id="middleMenubar">
+		<div id="innerMenubar">
+			<div id="navMenubar">
+				<ul>
+					<li id="save"><a href="#" onclick="formSubmit('userAction_insert','_self');this.blur();">保存</a></li>
+					<li id="back"><a href="#" onclick="history.go(-1);">返回</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </div>
    
 <div class="textbox" id="centerTextbox">
-  <div class="textbox-header">
-  <div class="textbox-inner-header">
-  <div class="textbox-title">
-   新增用户
-  </div> 
-  </div>
-  </div>
+	<div class="textbox-header">
+	  <div class="textbox-inner-header">
+		<div class="textbox-title">新增用户</div>
+	  </div>
+	</div>
   
 
  
@@ -38,10 +36,7 @@
        		<tr>
 	            <td class="columnTitle">所在部门：</td>
 	            <td class="tableContent">
-	            	<s:select name="dept.id" list="deptList"
-	            		listKey="id" listValue="deptName"
-	            		headerKey="" headerValue="--请选择--"
-	            	></s:select>
+	            	<s:select name="dept.id" list="deptList" listKey="id" listValue="deptName" headerKey="" headerValue="--请选择--"></s:select>
 	            </td>
 	        </tr>
         	<tr>
@@ -58,10 +53,7 @@
 	            <td class="tableContent"><input type="text" name="userinfo.name" value=""/></td>
 	            <td class="columnTitle">直属领导：</td>
 	            <td class="tableContent">
-	            	<s:select name="userinfo.manager.id" list="userList"
-	            		listKey="id" listValue="userinfo.name"
-	            		headerKey="" headerValue="--请选择--"
-	            	></s:select>
+	            	<s:select name="userinfo.manager.id" list="userList" listKey="id" listValue="userinfo.name" headerKey="" headerValue="--请选择--" ></s:select>
 	            </td>
 	        </tr>		
 	        <tr>
@@ -115,8 +107,7 @@
 	        </tr>	
 		</table>
 	</div>
- 
- 
+</div>
 </form>
 </body>
 </html>

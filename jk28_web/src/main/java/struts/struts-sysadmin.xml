@@ -9,6 +9,7 @@
 	<constant name="struts.i18n.encoding" value="UTF-8" />
 
 	<!-- extends="default"才能使用Struts.xml中定义的全局异常 -->
+	<!-- 这里sysadmin和left.jsp中路径相对应 -->
 	<package name="sysadmin" namespace="/sysadmin" extends="default">
 		<action name="deptAction_*" class="deptAction" method="{1}">
 		    <result name="list">/WEB-INF/pages/sysadmin/dept/jDeptList.jsp</result>

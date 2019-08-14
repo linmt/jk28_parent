@@ -7,6 +7,8 @@ import cn.itcast.jk.utils.Encrypt;
 import cn.itcast.jk.utils.Page;
 import cn.itcast.jk.utils.SysConstant;
 import cn.itcast.jk.utils.UtilFuns;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -18,6 +20,15 @@ public class UserServiceImpl implements UserService {
 
 	public void setBaseDao(BaseDao baseDao) {
 		this.baseDao = baseDao;
+	}
+
+	private SimpleMailMessage mailMessage;
+	private JavaMailSender mailSender;
+	public void setMailMessage(SimpleMailMessage mailMessage) {
+		this.mailMessage = mailMessage;
+	}
+	public void setMailSender(JavaMailSender mailSender) {
+		this.mailSender = mailSender;
 	}
 
 	public List<User> find(String hql, Class<User> entityClass, Object[] params) {
@@ -32,7 +43,10 @@ public class UserServiceImpl implements UserService {
 		return baseDao.findPage(hql, page, entityClass, params);
 	}
 
-	public void saveOrUpdate(User entity) {
+	//这里不仅能接收到user的值，还能接收userInfo的值，是因为user有userInfo字段，然后hibernate中又配置了两者一一对应的关系
+	//<one-to-one name="userinfo" class="Userinfo" cascade="all"></one-to-one>
+	//cascade="all"
+	public void saveOrUpdate(final User entity) {
 		if(UtilFuns.isEmpty(entity.getId())){
 			//新增
 			String id = UUID.randomUUID().toString();
@@ -41,8 +55,42 @@ public class UserServiceImpl implements UserService {
 
 			//补充Shiro添加后的bug
 			entity.setPassword(Encrypt.md5(SysConstant.DEFAULT_PASS, entity.getUserName()));
+
+			baseDao.saveOrUpdate(entity);//记录保存
+
+			//再开启一个新的线程完成邮件发送功能
+			/*Thread th = new Thread(new Runnable() {
+				public void run() {
+					try {
+						MailUtil.sendMessage(entity.getUserinfo().getEmail(), "新员工入职的系统账户通知", "欢迎您加入本集团，您的用户名:"+entity.getUserName()+",初始密码："+SysConstant.DEFAULT_PASS);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+
+			th.start();*/
+
+			//spring集成javaMail
+			Thread th = new Thread(new Runnable() {
+				public void run() {
+					try {
+						mailMessage.setTo(entity.getUserinfo().getEmail());
+						mailMessage.setSubject("新员工入职的系统账户通知");
+						mailMessage.setText("欢迎您加入本集团，您的用户名:"+entity.getUserName()+",初始密码："+SysConstant.DEFAULT_PASS);
+
+						mailSender.send(mailMessage);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+
+			th.start();
+		}else{
+			//修改
+			baseDao.saveOrUpdate(entity);
 		}
-		baseDao.saveOrUpdate(entity);
 	}
 
 	public void saveOrUpdateAll(Collection<User> entitys) {
@@ -50,7 +98,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public void deleteById(Class<User> entityClass, Serializable id) {
-		
 		baseDao.deleteById(entityClass, id);//这里不用递归
 	}
 

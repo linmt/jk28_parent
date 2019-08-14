@@ -43,62 +43,55 @@
 <body>
 <form name="icform" method="post">
 <div id="menubar">
-<div id="middleMenubar">
-<div id="innerMenubar">
-  <div id="navMenubar">
-<ul>
-<li id="view"><a href="javascript:toView()">查看</a></li>
-<li id="new"><a href="#" onclick="formSubmit('userAction_tocreate','_self');this.blur();">新增</a></li>
-<li id="update"><a href="#" onclick="javascript:toUpdate()">修改</a></li>
-<li id="update"><a href="#" onclick="formSubmit('userAction_torole','_self');this.blur();">角色</a></li>
-<li id="delete"><a href="#" onclick="formSubmit('userAction_delete','_self');this.blur();">删除</a></li>
-</ul>
-  </div>
-</div>
-</div>
+	<div id="middleMenubar">
+		<div id="innerMenubar">
+			<div id="navMenubar">
+				<ul>
+					<li id="view"><a href="javascript:toView()">查看</a></li>
+					<li id="new"><a href="#" onclick="formSubmit('userAction_tocreate','_self');this.blur();">新增</a></li>
+					<li id="update"><a href="#" onclick="javascript:toUpdate()">修改</a></li>
+					<li id="update"><a href="#" onclick="formSubmit('userAction_torole','_self');this.blur();">角色</a></li>
+					<li id="delete"><a href="#" onclick="formSubmit('userAction_delete','_self');this.blur();">删除</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </div>
    
 <div class="textbox" id="centerTextbox">
-  <div class="textbox-header">
-  <div class="textbox-inner-header">
-  <div class="textbox-title">
-     用户列表
-  </div> 
-  </div>
-  </div>
+	<div class="textbox-header">
+		<div class="textbox-inner-header">
+			<div class="textbox-title">用户列表</div>
+		</div>
+	</div>
   
-<div>
+	<div>
+		<div class="eXtremeTable" >
+			<table id="ec_table" class="tableRegion" width="98%" >
+				<thead>
+				<tr>
+					<td class="tableHeader"><input type="checkbox" name="selid" onclick="checkAll('id',this)"></td>
+					<td class="tableHeader">序号</td>
+					<td class="tableHeader">用户名</td>
+					<td class="tableHeader">状态</td>
+				</tr>
+				</thead>
+				<tbody class="tableBody" >
+				${links}
 
-
-<div class="eXtremeTable" >
-<table id="ec_table" class="tableRegion" width="98%" >
-	<thead>
-	<tr>
-		<td class="tableHeader"><input type="checkbox" name="selid" onclick="checkAll('id',this)"></td>
-		<td class="tableHeader">序号</td>
-		<td class="tableHeader">用户名</td>
-		<td class="tableHeader">状态</td>
-	</tr>
-	</thead>
-	<tbody class="tableBody" >
-${links}
-	
-	<c:forEach items="${results}" var="o" varStatus="status">
-	<tr class="odd" onmouseover="this.className='highlight'" onmouseout="this.className='odd'" align="left">
-		<td><input type="checkbox" name="id" value="${o.id}"/></td>
-		<td>${status.index+1}</td>
-		<td><a href="userAction_toview?id=${o.id}">${o.userName}</a></td>
-		<td>${o.state }</td>
-	</tr>
-	</c:forEach>
-	
-	</tbody>
-</table>
+				<c:forEach items="${results}" var="o" varStatus="status">
+					<tr class="odd" onmouseover="this.className='highlight'" onmouseout="this.className='odd'" align="left">
+						<td><input type="checkbox" name="id" value="${o.id}"/></td>
+						<td>${status.index+1}</td>
+						<td><a href="userAction_toview?id=${o.id}">${o.userName}</a></td>
+						<td>${o.state }</td>
+					</tr>
+				</c:forEach>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
- 
-</div>
- 
- 
 </form>
 </body>
 </html>

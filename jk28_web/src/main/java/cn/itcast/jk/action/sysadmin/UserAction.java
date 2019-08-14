@@ -62,9 +62,9 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 	 */
 	public String toview() throws Exception {
 		//1.调用业务方法，根据id,得到对象
-		User dept = userService.get(User.class, model.getId());
+		User obj = userService.get(User.class, model.getId());
 		//放入栈顶
-		super.push(dept);
+		super.push(obj);
 		//3.跳页面
 		return "toview";
 	}
@@ -83,13 +83,13 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 		//跳页面
 		return "tocreate";
 	}
-	
+
 	/**
 	 * 保存
 	 *     <s:select name="parent.id"
 	 *     <input type="text" name="deptName" value=""/>
 	 * model对象能接收
-	 *      parent 
+	 *      parent
 	 *           id
 	 *      deptName
 	 */
@@ -99,8 +99,7 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 		//跳页面
 		return "alist";
 	}
-	
-	
+
 	/**
 	 * 进入修改页面
 	 */
@@ -116,7 +115,7 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 		//5.跳页面
 		return "toupdate";
 	}
-	
+
 	/**
 	 * 修改（完成）
 	 */
@@ -128,11 +127,11 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 		obj.setDept(model.getDept());
 		obj.setUserName(model.getUserName());
 		obj.setState(model.getState());
-		
+
 		userService.saveOrUpdate(obj);
 		return "alist";
 	}
-	
+
 	/**
 	 * 删除（不用递归删除）
 	 * <input type="checkbox" name="id" value="100"/>
@@ -143,8 +142,8 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 	 *       具有同名框的一组值如何封装数据？
 	 *       如何服务端是String类型：
 	 *                       100, 3d00290a-1af0-4c28-853e-29fbf96a2722, 3d00290a-1af0-4c28-853e-29fbf96a2722
-	 *                       
-	 *    id:Integer,Float,Double.Date类型                  id=100               id=200        id=300  
+	 *
+	 *    id:Integer,Float,Double.Date类型                  id=100               id=200        id=300
 	 *    id=300
 	 *    Integer []id;  {100,200,300}
 	 */

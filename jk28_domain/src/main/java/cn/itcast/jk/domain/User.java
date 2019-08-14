@@ -12,7 +12,7 @@ public class User extends BaseEntity{
 	private String userName;//用户名
 	private String password;//密码  要加密
 	private Integer state;//状态
-	
+
 	public String getId() {
 		return id;
 	}
@@ -55,7 +55,4 @@ public class User extends BaseEntity{
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-	
-	
-	
 }

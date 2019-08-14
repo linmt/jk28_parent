@@ -32,8 +32,6 @@ public class ModuleServiceImpl implements ModuleService {
 	public void saveOrUpdate(Module entity) {
 		if(UtilFuns.isEmpty(entity.getId())){
 			//新增
-			
-			
 		}
 		baseDao.saveOrUpdate(entity);
 	}
@@ -43,7 +41,6 @@ public class ModuleServiceImpl implements ModuleService {
 	}
 
 	public void deleteById(Class<Module> entityClass, Serializable id) {
-		
 		baseDao.deleteById(entityClass, id);//删除一个对象
 	}
 
@@ -53,5 +50,4 @@ public class ModuleServiceImpl implements ModuleService {
 			this.deleteById(Module.class,id);
 		}
 	}
-
 }

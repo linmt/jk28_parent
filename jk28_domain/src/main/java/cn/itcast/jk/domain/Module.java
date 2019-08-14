@@ -12,16 +12,15 @@ public class Module extends BaseEntity {
 	private Integer layerNum;//层数   
 	private Integer isLeaf;//叶子
 	private String ico;  //图片
-	private String cpermission;//权限
+	private String cpermission;//权限，这里和name同值
 	private String curl;//路径
 	private Integer ctype;//菜单的类型：主菜单，左侧菜单   ，按钮
 	private Integer state;//状态
-	private String belong;//从属于
-	private String cwhich;//
-	private Integer quoteNum;//引用次数
+	private String belong;//从属于，比如部门管理和用户管理都有删除，这个删除是从属于部门还是用户，由这里决定
+	private String cwhich;//这个项目用不到
+	private Integer quoteNum;//引用次数，这个项目用不到
 	private String remark;//备注
 	private Integer orderNo;//排序号
-
 
 	public String getId() {
 		return id;

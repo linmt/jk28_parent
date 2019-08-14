@@ -1,14 +1,13 @@
 package cn.itcast.jk.action;
 
-import java.util.Map;
-
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 import org.apache.log4j.Logger;
 import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
+import java.util.Map;
 
 /**
  * @Description:
@@ -56,7 +55,6 @@ public class BaseAction extends ActionSupport implements RequestAware, SessionAw
 	}
 
 	/**
-	 * 
 	 * 将对象放入值栈的栈顶
 	 */
 	public void push(Object obj){
@@ -65,7 +63,6 @@ public class BaseAction extends ActionSupport implements RequestAware, SessionAw
 	
 	/**
 	 * 将key-value对放入值栈的 context中
-	 * 
 	 */
 	public void put(String key ,Object value){
 		ActionContext.getContext().put(key, value);

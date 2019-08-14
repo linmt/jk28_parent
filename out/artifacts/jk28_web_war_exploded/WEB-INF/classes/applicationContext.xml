@@ -39,6 +39,7 @@
 	</bean>
 
 	<!--Shiro安全框架产生代理子类的方式： 使用cglib方式-->
+	<!--放在事务管理器之前-->
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 
 	<!-- 3.事务管理器-->
@@ -52,7 +53,6 @@
 			<tx:method name="insert*" propagation="REQUIRED"/>
 			<tx:method name="update*" propagation="REQUIRED"/>
 			<tx:method name="delete*" propagation="REQUIRED"/>
-			
 			<tx:method name="get*" read-only="true"/>
 			<tx:method name="*" propagation="REQUIRED"/>
 		</tx:attributes>
@@ -69,5 +69,5 @@
 	<import resource="classpath:applicationContext-dao.xml"></import>
 	<import resource="classpath:applicationContext-service.xml"></import>
 	<import resource="classpath:applicationContext-shiro.xml"></import>
-
+	<import resource="classpath:applicationContext-mail.xml"></import>
 </beans>

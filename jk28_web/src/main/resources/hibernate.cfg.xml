@@ -20,8 +20,13 @@
 		<mapping resource="Dept.hbm.xml"></mapping>
 		<mapping resource="User.hbm.xml"></mapping>
 		<mapping resource="Userinfo.hbm.xml"></mapping>
-		<mapping resource="Role.hbm.xml"></mapping><!--  加载Role-->
+		<mapping resource="Role.hbm.xml"></mapping>
 		<mapping resource="Module.hbm.xml"></mapping>
+
+		<mapping resource="Contract.hbm.xml"></mapping>
+		<mapping resource="ContractProduct.hbm.xml"></mapping>
+		<mapping resource="ExtCproduct.hbm.xml"></mapping>
+		<mapping resource="Factory.hbm.xml"></mapping>
 	</session-factory>
 
 	<!--<session-factory>-->

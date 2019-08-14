@@ -18,6 +18,7 @@
       <property name="degree" column="DEGREE"></property>
       <property name="remark" column="REMARK"></property>
       <property name="orderNo" column="ORDER_NO"></property>
+      <property name="email" column="EMAIL"></property>
      
       <property name="createBy" column="CREATE_BY"></property>
       <property name="createDept" column="CREATE_DEPT"></property>

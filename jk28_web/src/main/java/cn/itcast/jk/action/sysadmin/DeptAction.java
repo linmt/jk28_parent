@@ -39,6 +39,7 @@ public class DeptAction extends BaseAction implements ModelDriven<Dept> {
 	 * 分页查询
 	 */
 	public String list() throws Exception {
+		//这里可以用page变量去接收，但是不接收也可以
 		deptService.findPage("from Dept", page, Dept.class, null);
 		
 		//设置分页的url地址

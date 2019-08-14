@@ -68,13 +68,14 @@ public class RoleAction extends BaseAction implements ModelDriven<Role> {
 	public String toview() throws Exception {
 		try {
 			//1.调用业务方法，根据id,得到对象
-			Role dept = roleService.get(Role.class, model.getId());
+			Role obj = roleService.get(Role.class, model.getId());
 			//放入栈顶
-			super.push(dept);
+			super.push(obj);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new SysException("请选择操作对象");
 		}
+
 		//3.跳页面
 		return "toview";
 	}

@@ -6,6 +6,7 @@
 <head>
 	<title></title>
 	<style type="text/css">
+		<!--见04补充一个样式_.flv  为了让选择框和文字始终在一起，且规定了宽度，这样就保证不同宽度的角色可以对齐-->
 	   span{display:inline-block;width:200px}
 	</style>
 </head>

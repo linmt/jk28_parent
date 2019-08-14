@@ -7,33 +7,27 @@
 
 <body>
 <form name="icform" method="post">
-      <input type="hidden" name="id" value="${id}"/>
-<div id="menubar">
-<div id="middleMenubar">
-<div id="innerMenubar">
-  <div id="navMenubar">
-<ul>
-<li id="back"><a href="#" onclick="history.go(-1);">返回</a></li>
-</ul>
-  </div>
-</div>
-</div>
-</div>
+	<input type="hidden" name="id" value="${id}"/>
+	<div id="menubar">
+		<div id="middleMenubar">
+			<div id="innerMenubar">
+				<div id="navMenubar">
+					<ul>
+						<li id="back"><a href="#" onclick="history.go(-1);">返回</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
    
-  <div class="textbox-title">
-	<img src="${ctx }/skin/default/images/icon/currency_yen.png"/>
-   查看部门
-  </div> 
-  
-
- 
+	<div class="textbox-title">
+		<img src="${ctx }/skin/default/images/icon/currency_yen.png"/>查看部门
+  	</div>
     <div>
 		<table class="commonTable" cellspacing="1">
 	        <tr>
 	            <td class="columnTitle">上级部门：</td>
-	            <td class="tableContent">
-	            	${parent.deptName }
-	            </td>
+	            <td class="tableContent">${parent.deptName }</td>
 	        </tr>		
 	        <tr>
 	            <td class="columnTitle">部门名称：</td>

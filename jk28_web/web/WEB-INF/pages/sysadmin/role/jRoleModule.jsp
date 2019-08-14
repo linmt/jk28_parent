@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title></title>
+	<%--引入的文件--%>
 	<link rel="stylesheet" href="${ctx }/components/zTree/css/zTreeStyle/zTreeStyle.css" type="text/css" />
 	<script type="text/javascript" src="${ctx }/components/zTree/js/jquery-1.4.4.min.js"></script>
 	<script type="text/javascript" src="${ctx }/components/zTree/js/jquery.ztree.core-3.5.min.js"></script>
@@ -31,13 +32,16 @@
 			<%--});--%>
 		<%--});--%>
 		<%----%>
-		<%--//初始化ZTree树--%>
-		<%--function initZtree(data) {--%>
-			<%--var zNodes = eval("(" + data + ")");		//动态js语句--%>
-			<%--zTreeObj = $.fn.zTree.init($('#jkTree'), setting, zNodes);	//jkTree 树的id，支持多个树--%>
-			<%--zTreeObj.expandAll(true);		//展开所有树节点--%>
-		<%--}--%>
+		//初始化ZTree树
+		/*
+		function initZtree(data) {
+			var zNodes = eval("(" + data + ")");		//动态js语句
+			zTreeObj = $.fn.zTree.init($('#jkTree'), setting, zNodes);	//jkTree 树的id，支持多个树
+			zTreeObj.expandAll(true);		//展开所有树节点
+		}
+		*/
 
+        //另一种写法
         $(document).ready(function() {
             $.post(
                 "${ctx}/sysadmin/roleAction_roleModuleJsonStr.action",
