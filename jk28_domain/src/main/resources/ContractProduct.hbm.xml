@@ -4,7 +4,7 @@
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
     
 <hibernate-mapping package="cn.itcast.jk.domain">
-	<class name="ContractProduct" table="CONTRACT_PRODUCT_C">
+	<class name="ContractProduct" table="CONTRACT_PRODUCT_C" dynamic-insert="true" dynamic-update="true">
 		<id name="id" column="CONTRACT_PRODUCT_ID">
 			<generator class="uuid"/>
 		</id>

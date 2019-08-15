@@ -1,14 +1,14 @@
 package cn.itcast.jk.service.impl;
 
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.List;
-
 import cn.itcast.jk.dao.BaseDao;
 import cn.itcast.jk.domain.Contract;
 import cn.itcast.jk.service.ContractService;
 import cn.itcast.jk.utils.Page;
 import cn.itcast.jk.utils.UtilFuns;
+
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 
 public class ContractServiceImpl implements ContractService {
 
@@ -48,13 +48,11 @@ public class ContractServiceImpl implements ContractService {
 	}
 
 	public void delete(Class<Contract> entityClass, Serializable[] ids) {
-		
 		for(Serializable id :ids){
 			this.deleteById(Contract.class,id);
 		}
 	}
 
-	@Override
 	public void changeState(String[] ids, Integer state) {
 		 for(String id :ids){
 			Contract contract =  baseDao.get(Contract.class, id);

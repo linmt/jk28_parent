@@ -37,7 +37,7 @@
 
 	<!-- 分模块开发 -->
 	<include file="struts/struts-sysadmin.xml"></include>
-	<!--<include file="struts/struts-cargo.xml"></include>-->
+	<include file="struts/struts-cargo.xml"></include>
 	<!--<include file="struts/struts-stat.xml"></include>-->
 	
 </struts>

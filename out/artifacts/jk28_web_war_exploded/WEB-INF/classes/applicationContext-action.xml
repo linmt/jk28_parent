@@ -39,4 +39,19 @@
 	<bean id="moduleAction" class="cn.itcast.jk.action.sysadmin.ModuleAction" scope="prototype">
 		<property name="moduleService" ref="moduleService"></property>
 	</bean>
+
+	<!-- 货运管理 -->
+	<bean id="contractAction" class="cn.itcast.jk.action.cargo.ContractAction" scope="prototype">
+		<property name="contractService" ref="contractService"></property>
+	</bean>
+
+	<bean id="contractProductAction" class="cn.itcast.jk.action.cargo.ContractProductAction" scope="prototype">
+		<property name="contractProductService" ref="contractProductService"></property>
+		<property name="factoryService" ref="factoryService"></property>
+	</bean>
+
+	<bean id="extCproductAction" class="cn.itcast.jk.action.cargo.ExtCproductAction" scope="prototype">
+		<property name="extCproductService" ref="extCproductService"></property>
+		<property name="factoryService" ref="factoryService"></property>
+	</bean>
 </beans>

@@ -47,7 +47,6 @@ public class ContractProductServiceImpl implements ContractProductService {
 			
 			//保存购销合同的总金额 
 			baseDao.saveOrUpdate(contract);
-			
 		}else{
 			//修改
 			double oldAmount = entity.getAmount();//取出货物的原有总金额 
@@ -67,18 +66,15 @@ public class ContractProductServiceImpl implements ContractProductService {
 	}
 
 	public void deleteById(Class<ContractProduct> entityClass, Serializable id) {
-		
 		baseDao.deleteById(entityClass, id);//删除一个对象
 	}
 
 	public void delete(Class<ContractProduct> entityClass, Serializable[] ids) {
-		
 		for(Serializable id :ids){
 			this.deleteById(ContractProduct.class,id);
 		}
 	}
 
-	@Override
 	public void delete(Class<ContractProduct> entityClass, ContractProduct model) {
 		//1.加载要删除的货物对象
 		ContractProduct cp = baseDao.get(ContractProduct.class, model.getId());
@@ -103,5 +99,4 @@ public class ContractProductServiceImpl implements ContractProductService {
 		//6.删除货物对象  级联删除附件   <set name="extCproducts" cascade="all" inverse="true">
 		baseDao.deleteById(ContractProduct.class, model.getId());
 	}
-
 }

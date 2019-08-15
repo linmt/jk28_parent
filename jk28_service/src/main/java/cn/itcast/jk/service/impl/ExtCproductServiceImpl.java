@@ -1,15 +1,15 @@
 package cn.itcast.jk.service.impl;
 
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.List;
-
 import cn.itcast.jk.dao.BaseDao;
 import cn.itcast.jk.domain.Contract;
 import cn.itcast.jk.domain.ExtCproduct;
 import cn.itcast.jk.service.ExtCproductService;
 import cn.itcast.jk.utils.Page;
 import cn.itcast.jk.utils.UtilFuns;
+
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 
 public class ExtCproductServiceImpl implements ExtCproductService {
 
@@ -65,18 +65,15 @@ public class ExtCproductServiceImpl implements ExtCproductService {
 	}
 
 	public void deleteById(Class<ExtCproduct> entityClass, Serializable id) {
-		
 		baseDao.deleteById(entityClass, id);//删除一个对象
 	}
 
 	public void delete(Class<ExtCproduct> entityClass, Serializable[] ids) {
-		
 		for(Serializable id :ids){
 			this.deleteById(ExtCproduct.class,id);
 		}
 	}
 
-	@Override
 	public void delete(Class<ExtCproduct> entityClass, ExtCproduct model) {
 		ExtCproduct extCproduct = baseDao.get(ExtCproduct.class, model.getId());//得到附件对象
 		
@@ -90,7 +87,5 @@ public class ExtCproductServiceImpl implements ExtCproductService {
 		
 		//删除附件
 		baseDao.deleteById(ExtCproduct.class,model.getId());
-		
 	}
-
 }

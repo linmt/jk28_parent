@@ -1,22 +1,15 @@
 package cn.itcast.jk.action.cargo;
 
-import java.util.List;
-
-import com.opensymphony.xwork2.ModelDriven;
-
 import cn.itcast.jk.action.BaseAction;
 import cn.itcast.jk.domain.ExtCproduct;
 import cn.itcast.jk.domain.Factory;
 import cn.itcast.jk.service.ExtCproductService;
-import cn.itcast.jk.service.ContractService;
 import cn.itcast.jk.service.FactoryService;
 import cn.itcast.jk.utils.Page;
+import com.opensymphony.xwork2.ModelDriven;
 
-/**
- * 
- * @author Administrator
- *
- */
+import java.util.List;
+
 public class ExtCproductAction extends BaseAction implements ModelDriven<ExtCproduct> {
 	private ExtCproduct model = new ExtCproduct();
 
@@ -46,8 +39,6 @@ public class ExtCproductAction extends BaseAction implements ModelDriven<ExtCpro
 		this.factoryService = factoryService;
 	}
 
-	
-
 	/**
 	 * 进入新增页面 <a href=
 	 * "/jk28_web/cargo/contractProductAction_tocreate?contract.id=4028d3db5662dfb4015662f0ecbc0001">
@@ -68,8 +59,7 @@ public class ExtCproductAction extends BaseAction implements ModelDriven<ExtCpro
 		
 		//将page放入栈顶
 		super.push(page);
-		
-		
+
 		// 跳页面
 		return "tocreate";
 	}
@@ -125,10 +115,6 @@ public class ExtCproductAction extends BaseAction implements ModelDriven<ExtCpro
 	    obj.setOrderNo(model.getOrderNo());
 	    obj.setProductDesc(model.getProductDesc());   
 	    obj.setProductRequest(model.getProductRequest());
-	     
-	
-	
-		  
 
 		extCproductService.saveOrUpdate(obj);
 		return tocreate();
@@ -145,8 +131,6 @@ public class ExtCproductAction extends BaseAction implements ModelDriven<ExtCpro
 	 */
 	public String delete() throws Exception {
 		extCproductService.delete(ExtCproduct.class, model);
-
 		return tocreate();
 	}
-
 }

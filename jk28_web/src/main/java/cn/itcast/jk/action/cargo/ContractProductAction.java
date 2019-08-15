@@ -1,22 +1,15 @@
 package cn.itcast.jk.action.cargo;
 
-import java.util.List;
-
-import com.opensymphony.xwork2.ModelDriven;
-
 import cn.itcast.jk.action.BaseAction;
 import cn.itcast.jk.domain.ContractProduct;
 import cn.itcast.jk.domain.Factory;
 import cn.itcast.jk.service.ContractProductService;
-import cn.itcast.jk.service.ContractService;
 import cn.itcast.jk.service.FactoryService;
 import cn.itcast.jk.utils.Page;
+import com.opensymphony.xwork2.ModelDriven;
 
-/**
- * 
- * @author Administrator
- *
- */
+import java.util.List;
+
 public class ContractProductAction extends BaseAction implements ModelDriven<ContractProduct> {
 	private ContractProduct model = new ContractProduct();
 
@@ -45,8 +38,6 @@ public class ContractProductAction extends BaseAction implements ModelDriven<Con
 		this.factoryService = factoryService;
 	}
 
-	
-
 	/**
 	 * 进入新增页面 <a href=
 	 * "/jk28_web/cargo/contractProductAction_tocreate?contract.id=4028d3db5662dfb4015662f0ecbc0001">
@@ -67,8 +58,7 @@ public class ContractProductAction extends BaseAction implements ModelDriven<Con
 		
 		//将page放入栈顶
 		super.push(page);
-		
-		
+
 		// 跳页面
 		return "tocreate";
 	}
@@ -125,8 +115,6 @@ public class ContractProductAction extends BaseAction implements ModelDriven<Con
 	    obj.setOrderNo(model.getOrderNo());
 	    obj.setProductDesc(model.getProductDesc());   
 	    obj.setProductRequest(model.getProductRequest());
-	     
-	   
 
 		contractProductService.saveOrUpdate(obj);
 		return tocreate();
@@ -145,5 +133,4 @@ public class ContractProductAction extends BaseAction implements ModelDriven<Con
 
 		return tocreate();
 	}
-
 }

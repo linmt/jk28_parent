@@ -1,5 +1,7 @@
 package cn.itcast.jk.action;
 
+import cn.itcast.jk.domain.User;
+import cn.itcast.jk.utils.SysConstant;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.log4j.Logger;
@@ -39,17 +41,14 @@ public class BaseAction extends ActionSupport implements RequestAware, SessionAw
 		return application;
 	}
 
-	@Override
 	public void setRequest(Map<String, Object> request) {
 		this.request = request;
 	}
 
-	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
 
-	@Override
 	public void setApplication(Map<String, Object> application) {
 		this.application = application;
 	}
@@ -66,5 +65,13 @@ public class BaseAction extends ActionSupport implements RequestAware, SessionAw
 	 */
 	public void put(String key ,Object value){
 		ActionContext.getContext().put(key, value);
+	}
+
+	/**
+	 * 获取当前登录用户的信息
+	 */
+	public User getCurUser() {
+		User user = (User)session.get(SysConstant.CURRENT_USER_INFO);
+		return user;
 	}
 }
