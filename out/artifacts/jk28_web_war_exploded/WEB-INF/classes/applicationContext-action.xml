@@ -54,4 +54,16 @@
 		<property name="extCproductService" ref="extCproductService"></property>
 		<property name="factoryService" ref="factoryService"></property>
 	</bean>
+
+	<!-- 出货表 -->
+	<bean id="outProductAction" class="cn.itcast.jk.action.cargo.OutProductAction" scope="prototype">
+		<property name="contractProductService" ref="contractProductService"></property>
+	</bean>
+
+	<!-- 报运 -->
+	<bean id="exportAction" class="cn.itcast.jk.action.cargo.ExportAction" scope="prototype">
+		<property name="exportService" ref="exportService"></property>
+		<property name="contractService" ref="contractService"></property>
+		<property name="exportProductService" ref="exportProductService"></property>
+	</bean>
 </beans>

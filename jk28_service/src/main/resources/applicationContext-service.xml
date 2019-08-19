@@ -42,5 +42,16 @@
 	<bean id="factoryService" class="cn.itcast.jk.service.impl.FactoryServiceImpl">
 		<property name="baseDao" ref="baseDao"></property>
 	</bean>
+
+	<bean id="exportService" class="cn.itcast.jk.service.impl.ExportServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+
+	<bean id="exportProductService" class="cn.itcast.jk.service.impl.ExportProductServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	<bean id="extEproductService" class="cn.itcast.jk.service.impl.ExtEproductServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
 </beans>
 	

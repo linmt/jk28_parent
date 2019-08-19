@@ -48,6 +48,7 @@ function setSelectOption(obj, curValue ){
 /* 设置此行是否更新 by tony 20091110 
 */	    
 function setTRUpdateFlag( obj ){
+	alert('触发了事件');
 	//alert(obj.type);
 	//alert(obj.defaultValue);
 	var currTr = obj.parentElement.parentElement;
@@ -56,7 +57,8 @@ function setTRUpdateFlag( obj ){
 	}
 	//alert(currTr.innerHTML);
 	if(obj.value!=obj.defaultValue){	//当填写的框内容发生变化时,设置本行记录发生变化标识
-		currTr.cells[1].all.mr_changed.value = "1";
+		//currTr.cells[1].all.mr_changed.value = "1";
+        currTr.getElementsByTagName("input")[2].value=1;
 	}
 	//currTr.cells[1].document.getElementsByTagName("INPUT")[4].value = "1";
 	//alert(currTr.cells[1].all.mr_changed.value);

@@ -27,6 +27,10 @@
 		<mapping resource="ContractProduct.hbm.xml"></mapping>
 		<mapping resource="ExtCproduct.hbm.xml"></mapping>
 		<mapping resource="Factory.hbm.xml"></mapping>
+
+		<mapping resource="Export.hbm.xml"></mapping>
+		<mapping resource="ExportProduct.hbm.xml"></mapping>
+		<mapping resource="ExtEproduct.hbm.xml"></mapping>
 	</session-factory>
 
 	<!--<session-factory>-->

@@ -6,6 +6,9 @@ import cn.itcast.jk.domain.User;
 import cn.itcast.jk.service.ContractService;
 import cn.itcast.jk.utils.Page;
 import com.opensymphony.xwork2.ModelDriven;
+import org.apache.struts2.ServletActionContext;
+
+import javax.servlet.http.HttpServletResponse;
 
 public class ContractAction extends BaseAction implements ModelDriven<Contract> {
 	private Contract model = new Contract();
@@ -189,5 +192,24 @@ public class ContractAction extends BaseAction implements ModelDriven<Contract> 
 		//2.遍历ids,并加载出每个购销合同对象，再修改购销合同的状态
 		contractService.changeState(ids, 0);
 		return "alist";
+	}
+
+	/**
+	 * 打印
+	 */
+	public String print() throws Exception {
+		//1.根据购销合同的id,得到购销合同对象
+		Contract contract = contractService.get(Contract.class, model.getId());
+
+		//2.指定path
+		String path = ServletActionContext.getServletContext().getRealPath("/");//应用程序的根路径
+
+		//3.指定response
+		HttpServletResponse response = ServletActionContext.getResponse();
+
+		ContractPrint cp = new ContractPrint();
+		cp.print(contract, path, response);
+
+		return NONE;
 	}
 }
