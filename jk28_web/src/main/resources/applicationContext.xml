@@ -70,4 +70,5 @@
 	<import resource="classpath:applicationContext-service.xml"></import>
 	<import resource="classpath:applicationContext-shiro.xml"></import>
 	<import resource="classpath:applicationContext-mail.xml"></import>
+	<import resource="classpath:applicationContext-job.xml"></import>
 </beans>

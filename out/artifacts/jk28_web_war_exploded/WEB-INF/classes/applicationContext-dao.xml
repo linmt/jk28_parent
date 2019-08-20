@@ -24,4 +24,14 @@
 	<bean id="baseDao" class="cn.itcast.jk.dao.impl.BaseDaoImpl">
 	     <property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+
+	<!-- jdbcTemplate模板的配置 -->
+	<bean id="jdbcTemplate"  class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<!-- sqlDao的配置 -->
+	<bean id="sqlDao" class="cn.itcast.jk.dao.springdao.SqlDao">
+		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
+	</bean>
 </beans>

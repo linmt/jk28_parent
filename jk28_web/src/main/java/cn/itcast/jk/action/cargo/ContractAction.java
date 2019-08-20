@@ -49,10 +49,8 @@ public class ContractAction extends BaseAction implements ModelDriven<Contract> 
 		}else if(degree==2){
 			//说明是管理本部门及下属部门？？？？？
 
-
 		}else if(degree==1){
 			//说明是副总？？？？？
-
 
 		}else if(degree==0){
 			//说明是总经理
@@ -66,7 +64,6 @@ public class ContractAction extends BaseAction implements ModelDriven<Contract> 
 
 		//将page对象压入栈顶
 		super.push(page);
-
 
 		return "list";
 	}
